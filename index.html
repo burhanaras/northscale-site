@@ -1,191 +1,886 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northscale</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background: #f8f9fa;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: #667eea;
-        }
-        
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.75rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northscale Software Consulting LLC</title>
+  <meta name="description" content="Senior software consulting for companies that need reliable engineering execution across mobile, backend, cloud, and AI integrations." />
+  <style>
+    :root {
+      --bg: #071018;
+      --bg-soft: #0d1824;
+      --card: rgba(255, 255, 255, 0.065);
+      --card-strong: rgba(255, 255, 255, 0.105);
+      --text: #eef6ff;
+      --muted: #9fb0c3;
+      --muted-2: #728295;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #6ee7ff;
+      --accent-2: #8b5cf6;
+      --green: #8fffc1;
+      --warning: #ffd166;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110, 231, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.16), transparent 30%),
+        linear-gradient(180deg, #071018 0%, #08131f 48%, #061019 100%);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 16, 24, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 760;
+      letter-spacing: -0.03em;
+      font-size: 1.1rem;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(110, 231, 255, 0.95), rgba(139, 92, 246, 0.86));
+      box-shadow: 0 14px 34px rgba(110, 231, 255, 0.18);
+      display: grid;
+      place-items: center;
+      color: #061019;
+      font-weight: 900;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(110, 231, 255, 0.45);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .btn.primary {
+      color: #061019;
+      background: linear-gradient(135deg, var(--accent), #b9f5ff);
+      border-color: transparent;
+      box-shadow: 0 18px 45px rgba(110, 231, 255, 0.18);
+    }
+
+    .hero {
+      padding: 88px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      border: 1px solid rgba(110, 231, 255, 0.22);
+      background: rgba(110, 231, 255, 0.075);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(143, 255, 193, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.45rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      margin-bottom: 28px;
+      max-width: 880px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 5%, #a9efff 45%, #bda8ff 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2vw, 1.24rem);
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .micro-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .micro-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .check {
+      color: var(--green);
+    }
+
+    .visual {
+      position: relative;
+      min-height: 560px;
+      border-radius: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)),
+        radial-gradient(circle at 50% 0%, rgba(110, 231, 255, 0.20), transparent 38%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .visual:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+    }
+
+    .system-card {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      top: 34px;
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(5, 13, 20, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(16px);
+    }
+
+    .system-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .status {
+      color: var(--green);
+      background: rgba(143, 255, 193, 0.09);
+      border: 1px solid rgba(143, 255, 193, 0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .pipeline {
+      display: grid;
+      gap: 11px;
+    }
+
+    .pipe-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pipe-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: rgba(110, 231, 255, 0.12);
+      color: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    .pipe-title {
+      font-weight: 760;
+      letter-spacing: -0.02em;
+    }
+
+    .pipe-meta {
+      color: var(--muted-2);
+      font-size: 0.84rem;
+    }
+
+    .pipe-tag {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .floating {
+      position: absolute;
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(8, 20, 30, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.34);
+    }
+
+    .metric {
+      right: 28px;
+      bottom: 34px;
+      width: 230px;
+    }
+
+    .metric small,
+    .scope small {
+      color: var(--muted-2);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 16px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 82%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: inherit;
+    }
+
+    .scope {
+      left: 34px;
+      bottom: 42px;
+      width: 260px;
+    }
+
+    .scope ul {
+      list-style: none;
+      margin-top: 12px;
+      display: grid;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: 74px 0;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      max-width: 760px;
+    }
+
+    .section .lead {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1.03rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      min-height: 220px;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--card-strong);
+      border-color: rgba(110, 231, 255, 0.24);
+    }
+
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(110, 231, 255, 0.11);
+      color: var(--accent);
+      margin-bottom: 22px;
+      font-size: 1.15rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .panel {
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      padding: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .panel h2 {
+      margin-bottom: 18px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .list li {
+      display: flex;
+      gap: 12px;
+      color: var(--muted);
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      counter-reset: step;
+    }
+
+    .step {
+      counter-increment: step;
+      position: relative;
+      padding: 24px;
+      min-height: 210px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      border: 1px solid var(--line);
+    }
+
+    .step:before {
+      content: "0" counter(step);
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(110, 231, 255, 0.12);
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 28px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      padding: 80px 0 104px;
+    }
+
+    .cta-box {
+      text-align: center;
+      border-radius: 34px;
+      padding: 66px 28px;
+      border: 1px solid rgba(110, 231, 255, 0.18);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(110, 231, 255, 0.16), transparent 38%),
+        rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      margin: 0 auto 18px;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      max-width: 820px;
+    }
+
+    .cta-box p {
+      margin: 0 auto 28px;
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 1.08rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--muted-2);
+      padding: 28px 0;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 520px;
+      }
+
+      .cards,
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-top {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 16vw, 4.7rem);
+      }
+
+      .cards,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 610px;
+        border-radius: 26px;
+      }
+
+      .system-card,
+      .floating {
+        left: 18px;
+        right: 18px;
+        width: auto;
+      }
+
+      .metric {
+        bottom: 24px;
+      }
+
+      .scope {
+        bottom: 190px;
+      }
+
+      .panel {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="noise"></div>
+  <div class="page">
     <header>
-        <h1>Northscale</h1>
-        <p>Scale your applications with confidence</p>
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Northscale home">
+          <span class="mark">N</span>
+          <span>Northscale</span>
+        </a>
+        <nav class="navlinks" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#why">Why Northscale</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="btn" href="mailto:hello@northscale.dev">Start a project</a>
+      </div>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <section class="hero" id="home">
-            <h2>Welcome to Northscale</h2>
-            <p>Build scalable, reliable applications with our comprehensive platform. From development to deployment, we've got you covered.</p>
-            <a href="#" class="cta-button">Get Started</a>
-        </section>
-        
-        <section id="features">
-            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Our Features</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>⚡ Performance</h3>
-                    <p>Lightning-fast infrastructure optimized for speed and reliability. Handle millions of requests with ease.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔒 Security</h3>
-                    <p>Enterprise-grade security features to protect your data and ensure compliance with industry standards.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📈 Scalability</h3>
-                    <p>Automatically scale your resources based on demand. Pay only for what you use.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🛠️ Developer Friendly</h3>
-                    <p>Intuitive APIs and comprehensive documentation make development a breeze.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📊 Analytics</h3>
-                    <p>Real-time insights and detailed metrics to monitor your application performance.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🌍 Global Reach</h3>
-                    <p>Serve your users from data centers across the globe with minimal latency.</p>
-                </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <div class="eyebrow"><span class="dot"></span> Senior software consulting for ambitious teams</div>
+            <h1><span class="gradient-text">Build faster.</span><br />Ship cleaner.<br />Scale with confidence.</h1>
+            <p>
+              Northscale Software Consulting LLC helps companies design, build, and improve production-grade software across mobile, backend, cloud, and AI-powered workflows.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:hello@northscale.dev?subject=Consulting%20Inquiry">Book a consulting call</a>
+              <a class="btn" href="#services">Explore services</a>
             </div>
-        </section>
+            <div class="micro-proof">
+              <span><b class="check">✓</b> Senior engineering execution</span>
+              <span><b class="check">✓</b> Clear scope and delivery</span>
+              <span><b class="check">✓</b> Built for real products</span>
+            </div>
+          </div>
+
+          <div class="visual reveal" aria-label="Engineering delivery dashboard illustration">
+            <div class="system-card">
+              <div class="system-head">
+                <span>Delivery System</span>
+                <span class="status">Active</span>
+              </div>
+              <div class="pipeline">
+                <div class="pipe-row">
+                  <div class="pipe-icon">01</div>
+                  <div>
+                    <div class="pipe-title">Architecture Review</div>
+                    <div class="pipe-meta">Find bottlenecks, risks, and missing foundations.</div>
+                  </div>
+                  <div class="pipe-tag">Audit</div>
+                </div>
+                <div class="pipe-row">
+                  <div class="pipe-icon">02</div>
+                  <div>
+                    <div class="pipe-title">Product Engineering</div>
+                    <div class="pipe-meta">Mobile, backend, APIs, integrations, and tooling.</div>
+                  </div>
+                  <div class="pipe-tag">Build</div>
+                </div>
+                <div class="pipe-row">
+                  <div class="pipe-icon">03</div>
+                  <div>
+                    <div class="pipe-title">AI Integration</div>
+                    <div class="pipe-meta">Practical AI features connected to real workflows.</div>
+                  </div>
+                  <div class="pipe-tag">Extend</div>
+                </div>
+                <div class="pipe-row">
+                  <div class="pipe-icon">04</div>
+                  <div>
+                    <div class="pipe-title">Launch Support</div>
+                    <div class="pipe-meta">Performance, reliability, monitoring, and handoff.</div>
+                  </div>
+                  <div class="pipe-tag">Ship</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating scope">
+              <small>Typical engagements</small>
+              <ul>
+                <li>✓ iOS / Swift / SwiftUI apps</li>
+                <li>✓ Backend and API systems</li>
+                <li>✓ AI-assisted product features</li>
+                <li>✓ Technical leadership support</li>
+              </ul>
+            </div>
+
+            <div class="floating metric">
+              <small>Focus</small>
+              <strong>Execution</strong>
+              <div class="bar"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-top reveal">
+            <h2>Software consulting that turns unclear technical work into shipped product.</h2>
+            <p class="lead">We work with founders, product teams, and growing companies that need senior engineering capacity without hiring a full internal team first.</p>
+          </div>
+
+          <div class="cards">
+            <article class="card reveal">
+              <div class="icon">⌁</div>
+              <h3>Mobile Engineering</h3>
+              <p>Production iOS development, SwiftUI architecture, app modernization, performance tuning, and release support.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">▣</div>
+              <h3>Backend & APIs</h3>
+              <p>Reliable backend services, API integrations, authentication flows, database design, and cloud-ready implementation.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">✦</div>
+              <h3>AI Integration</h3>
+              <p>AI features that fit real business workflows: document analysis, automation, internal tools, summaries, and assistants.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">↗</div>
+              <h3>Architecture Advisory</h3>
+              <p>Technical audits, roadmap planning, build-vs-buy decisions, system design, and senior-level engineering guidance.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section">
+        <div class="container split">
+          <div class="panel reveal">
+            <h2>Not a body shop. Not a vague agency.</h2>
+            <p>
+              Northscale is designed for teams that need clear technical ownership: define the problem, choose the right path, build the system, and ship it cleanly.
+            </p>
+            <a class="btn primary" href="mailto:hello@northscale.dev?subject=Project%20Scope">Discuss your project</a>
+          </div>
+
+          <div class="panel reveal">
+            <h2>Where we help most</h2>
+            <ul class="list">
+              <li><b class="check">✓</b><span>You have a product idea but need a senior engineer to turn it into a technical plan.</span></li>
+              <li><b class="check">✓</b><span>Your app or backend exists, but the architecture is slowing the team down.</span></li>
+              <li><b class="check">✓</b><span>You want to add AI features without turning the product into a fragile demo.</span></li>
+              <li><b class="check">✓</b><span>You need temporary senior engineering capacity before making full-time hires.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="section">
+        <div class="container">
+          <div class="section-top reveal">
+            <h2>A simple delivery process.</h2>
+            <p class="lead">Small enough to move fast. Structured enough to avoid chaos.</p>
+          </div>
+
+          <div class="process">
+            <div class="step reveal">
+              <h3>Discover</h3>
+              <p>We clarify the business goal, technical constraints, timeline, and the real definition of success.</p>
+            </div>
+            <div class="step reveal">
+              <h3>Design</h3>
+              <p>We create the architecture, scope, milestones, and implementation plan before heavy building starts.</p>
+            </div>
+            <div class="step reveal">
+              <h3>Build</h3>
+              <p>We implement in focused iterations with practical communication and visible progress.</p>
+            </div>
+            <div class="step reveal">
+              <h3>Ship</h3>
+              <p>We support release, documentation, handoff, monitoring, and the next phase of improvements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta">
+        <div class="container">
+          <div class="cta-box reveal">
+            <h2>Need senior software execution without the full-time hiring delay?</h2>
+            <p>Send a short note about what you are building, what is blocked, and what timeline you are targeting.</p>
+            <a class="btn primary" href="mailto:hello@northscale.dev?subject=Northscale%20Consulting%20Inquiry">Contact Northscale</a>
+          </div>
+        </div>
+      </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2026 Northscale. All rights reserved.</p>
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Northscale Software Consulting LLC. All rights reserved.</div>
+        <div>Software Consulting · Product Engineering · AI Integration</div>
+      </div>
     </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
